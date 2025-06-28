@@ -1,0 +1,19 @@
+.board {
+    border: solid 1px black;
+    display: flex;
+    flex-direction: column;
+    height: 700px;
+    width: 700px;
+}
+
+.board .row {
+    flex-grow: 1;
+    display: flex;
+    border: solid 1px black;
+}
+
+.board .row .tile {
+    flex-grow: 1;
+    border: solid 2px black;
+
+}
