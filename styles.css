@@ -2,11 +2,12 @@
     border: solid 1px black;
     display: flex;
     flex-direction: column;
-    height: 700px;
-    width: 700px;
+    height: 600px;
+    width: 600px;
 }
 
 .board .row {
+    border: solid 1px black;
     flex-grow: 1;
     display: flex;
     border: solid 1px black;
@@ -14,6 +15,6 @@
 
 .board .row .tile {
     flex-grow: 1;
-    border: solid 2px black;
+    border: solid 1px black;
 
 }

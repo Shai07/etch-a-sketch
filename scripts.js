@@ -1,22 +1,12 @@
 const board = document.querySelector('.board');
-const tiles = document.querySelectorAll('.tile')
 const slider = document.querySelector('.slider');
 
-let SIZE = 10;
-grid(SIZE);
-tiles.forEach(tile => {
-    tile.addEventListener('mouseover', function() {
-        console.log(`hovering`);
-        tile.style.backgroundColor = 'yellow';
-    }) 
+tester.addEventListener('mouseover', function() {
+    tester.style.backgroundColor = 'yellow';
 })
 
-slider.addEventListener('change', function() {
-    SIZE = slider.value;
-    grid(SIZE);
-})
-
-
+let size = 10;
+let color = 'yellow'
 
 function grid(size) {
     board.replaceChildren();
@@ -31,3 +21,19 @@ function grid(size) {
         }
     }
 }
+
+function paint(color) {
+    const tiles = document.querySelectorAll('.tile')
+    for (let tile of tiles) {
+        tile.addEventListener('mouseover', function() {
+        tile.style.backgroundColor = color;})
+    }
+}
+
+slider.addEventListener('change', function() {
+    size = slider.value;
+    grid(size);
+    paint(color);
+})
+
+grid(size); paint(color);
