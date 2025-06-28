@@ -1,9 +1,6 @@
 const board = document.querySelector('.board');
 const slider = document.querySelector('.slider');
 
-tester.addEventListener('mouseover', function() {
-    tester.style.backgroundColor = 'yellow';
-})
 
 let size = 10;
 let color = 'yellow'
