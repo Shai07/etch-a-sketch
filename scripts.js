@@ -4,6 +4,12 @@ const slider = document.querySelector('.slider');
 
 let SIZE = 10;
 grid(SIZE);
+tiles.forEach(tile => {
+    tile.addEventListener('mouseover', function() {
+        console.log(`hovering`);
+        tile.style.backgroundColor = 'yellow';
+    }) 
+})
 
 slider.addEventListener('change', function() {
     SIZE = slider.value;
