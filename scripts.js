@@ -3,7 +3,11 @@ const slider = document.querySelector('.slider');
 
 
 let size = 10;
-let color = 'yellow'
+let color = 'red'
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
 
 function grid(size) {
     board.replaceChildren();
@@ -27,10 +31,27 @@ function paint(color) {
     }
 }
 
+function paintRandom() {
+    const tiles = document.querySelectorAll('.tile')
+    for (let tile of tiles) {
+        tile.addEventListener('mouseover', function() {
+        tile.style.backgroundColor = `rgb(${getRandomInt(255)},${getRandomInt(255)}, ${getRandomInt(255)})`;})
+    }
+}
+
+function darken() {
+
+}
+
+function reset() {
+
+}
+
+
 slider.addEventListener('change', function() {
     size = slider.value;
     grid(size);
     paint(color);
 })
 
-grid(size); paint(color);
+grid(size); darken();
