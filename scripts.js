@@ -3,7 +3,9 @@ const slider = document.querySelector('.slider');
 
 
 let size = 10;
-let color = 'red'
+let color = 'rgb(0, 0, 0)';
+let mode = 'single-color';
+
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -23,49 +25,41 @@ function grid(size) {
     }
 }
 
-function paint(color) {
-    const tiles = document.querySelectorAll('.tile')
-    for (let tile of tiles) {
-        tile.addEventListener('mouseover', function() {
-        tile.style.backgroundColor = color;})
+function paint(tile, color) {
+    tile.style.backgroundColor = color;
+    return false;
+}
+
+function paintRandom(tile) {
+    tile.style.backgroundColor = `rgb(${getRandomInt(255)},${getRandomInt(255)}, ${getRandomInt(255)}, 0)`;
+}
+
+function darken(tile) {
+    let currentColor = getComputedStyle(tile).backgroundColor;
+    let rgbaValues = currentColor.slice(currentColor.indexOf('(')+1, currentColor.indexOf(')')).split(', ');
+    console.log(rgbaValues);
+    if (Number(rgbaValues[3]) < 1){
+        tile.style.backgroundColor = `rgba(${rgbaValues[0]}, ${rgbaValues[1]}, ${rgbaValues[2]}, ${Number(rgbaValues[3])+0.1})`;
     }
 }
 
-function paintRandom() {
-    const tiles = document.querySelectorAll('.tile')
-    for (let tile of tiles) {
-        tile.addEventListener('mouseover', function() {
-        tile.style.backgroundColor = `rgb(${getRandomInt(255)},${getRandomInt(255)}, ${getRandomInt(255)})`;})
-    }
-}
-
-function darken() {
-    const tiles = document.querySelectorAll('.tile')
-    for (let tile of tiles) {
-        tile.addEventListener('mouseover', function() {
-            let currentColor = getComputedStyle(tile).backgroundColor;
-            let rgbaValues = currentColor.slice(currentColor.indexOf('(')+1, currentColor.indexOf(')')).split(', ');
-            console.log(rgbaValues);
-            if (Number(rgbaValues[3]) < 1){
-                tile.style.backgroundColor = `rgba(${rgbaValues[0]}, ${rgbaValues[1]}, ${rgbaValues[2]}, ${Number(rgbaValues[3])+0.1})`;
-                console.log('getting darker')
-            }
-        });
-    }
-}
-
-function disable() {
-    const tiles = document.querySelectorAll('.tile')
-    for (let tile of tiles) {
-        tile.removeEventListener('mouseover');
-    }
+function modeHandler(tile) {
+    if (mode === 'single-color') paint(tile, color);
+    if (mode === 'random') paintRandom(tile);
+    if (mode === 'darken') darken(tile);
 }
 
 
 slider.addEventListener('change', function() {
     size = slider.value;
     grid(size);
-    paint(color);
 })
 
-grid(size); darken();
+grid(size);
+
+const tiles = document.querySelectorAll('.tile')
+for (let tile of tiles) {
+    tile.addEventListener('mouseover', () => modeHandler(tile));
+}
+
+
