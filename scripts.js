@@ -41,25 +41,24 @@ function paintRandom() {
 
 function darken() {
     const tiles = document.querySelectorAll('.tile')
-    let currentColor = '';
     for (let tile of tiles) {
         tile.addEventListener('mouseover', function() {
-            currentColor = tile.style.backgroundColor;
+            let currentColor = getComputedStyle(tile).backgroundColor;
             let rgbaValues = currentColor.slice(currentColor.indexOf('(')+1, currentColor.indexOf(')')).split(', ');
             console.log(rgbaValues);
-            if (rgbaValues.length === 4 && rgbaValues[3] < 1){
-                tile.style.backgroundColor = `rgba(${rgbaValues[0]}, ${rgbaValues[1]}, ${rgbaValues[2]}, ${1})`;
+            if (Number(rgbaValues[3]) < 1){
+                tile.style.backgroundColor = `rgba(${rgbaValues[0]}, ${rgbaValues[1]}, ${rgbaValues[2]}, ${Number(rgbaValues[3])+0.1})`;
                 console.log('getting darker')
-            } else if (rgbaValues.length === 3) {
-                 tile.style.backgroundColor = `rgba(${rgbaValues[0]}, ${rgbaValues[1]}, ${rgbaValues[2]}, 0.2)`;
-                 console.log('about to be black')
             }
         });
     }
 }
 
-function reset() {
-
+function disable() {
+    const tiles = document.querySelectorAll('.tile')
+    for (let tile of tiles) {
+        tile.removeEventListener('mouseover');
+    }
 }
 
 
