@@ -1,5 +1,6 @@
 const board = document.querySelector('.board');
 const slider = document.querySelector('.slider');
+const sliderValue = document.querySelector('.value');
 const colorInput = document.querySelector('.color-input')
 const choices = document.querySelectorAll('.choice');
 
@@ -62,12 +63,13 @@ function modeHandler(tile) {
 
 slider.addEventListener('change', function() {
     size = slider.value;
+    sliderValue.textContent = `${size} x ${size}`
     grid(size);
 })
 
 colorInput.addEventListener('change', function() {
     color = colorInput.value;
-    
+
 })
 
 for (let choice of choices) {

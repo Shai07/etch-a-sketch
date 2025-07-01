@@ -6,6 +6,20 @@ body {
     justify-content: space-between;
     gap: 16px;
 }
+.header {
+    display: flex;
+    width: 650px;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: larger;
+    font-weight: 550;
+
+}
+
+.header input {
+    width:545px; 
+}
 
 .board {
     border: solid 1px black;
