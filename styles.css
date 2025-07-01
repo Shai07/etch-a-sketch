@@ -1,9 +1,18 @@
+body {
+    background-color: pink;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
 .board {
     border: solid 1px black;
     display: flex;
     flex-direction: column;
-    height: 600px;
-    width: 600px;
+    height: 650px;
+    width: 650px;
 }
 
 .board .row {
@@ -16,3 +25,41 @@
     border: solid 1px black;
 
 }
+
+.selection-menu {
+    display: flex;
+    justify-content: space-evenly;
+    width: 600px;
+    align-items: center;
+}
+
+.choice {
+    border: 1px solid black;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color:white;
+    font-weight: bold;
+    box-shadow: 2px 2px 5px black;
+    transition: scale 0.2s ease;
+}
+
+.choice:hover {
+    scale: 1.1;
+}
+
+#single-color {
+    display: flex;
+    align-items: center;
+    gap: 5px
+}
+
+#random {
+    background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+}
+
+#darken {
+    background: linear-gradient(90deg, black, rgb(55, 49, 49), rgb(113, 107, 107), rgb(161, 150, 150), lightgrey, rgb(203, 199, 199));
+}
+
+
