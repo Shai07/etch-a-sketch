@@ -47,7 +47,6 @@ function paintRandom(tile) {
 function darken(tile) {
     let currentColor = getComputedStyle(tile).backgroundColor;
     let rgbaValues = currentColor.slice(currentColor.indexOf('(')+1, currentColor.indexOf(')')).split(', ');
-    console.log(rgbaValues);
     if (tile.dataset.darkness < 1){
         tile.dataset.darkness = parseFloat(tile.dataset.darkness) + 0.1;
         tile.style.backgroundColor = `rgba(${rgbaValues[0]}, ${rgbaValues[1]}, ${rgbaValues[2]}, ${tile.dataset.darkness})`;
